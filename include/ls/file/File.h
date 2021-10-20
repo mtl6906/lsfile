@@ -12,20 +12,20 @@ namespace ls
     namespace file
     {
         class File
-        {
-          public:
-            File(const std::string &filename);
-			~File();
-			int size();
-            bool exist();
-            io::Writer *getWriter();
-            io::Reader *getReader();
+	{
+	    public:
+		File(const std::string &filename);
+	        ~File();
+	        int size();
+	        bool exist();
+	        io::Writer *getWriter();
+	        io::Reader *getReader();
           protected:
-		  	int fd;
-            std::string filename;
-            std::unique_ptr<struct stat> statbuf;
-			std::unique_ptr<io::Writer> writer;
-			std::unique_ptr<io::Reader> reader;
+                int fd;
+                std::string filename;
+                std::unique_ptr<struct stat> statbuf;
+                std::unique_ptr<io::Writer> writer;
+                std::unique_ptr<io::Reader> reader;
         };
     }
 }
