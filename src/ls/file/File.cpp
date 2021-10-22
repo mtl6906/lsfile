@@ -24,7 +24,7 @@ namespace ls
 
         int File::size()
         {
-        	if(statbuf == nullptr)
+        	if(statbuf != nullptr)
 			return statbuf -> st_size;
 		statbuf.reset(new struct stat());
 		if(lstat(filename.c_str(), statbuf.get()) < 0)
