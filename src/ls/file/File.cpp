@@ -11,7 +11,7 @@ namespace ls
 {
     namespace file
     {
-        File::File(const string &filename) : fd(-1), filename(filename)
+        File::File(const string &filename) : fd(-1), filename(filename), statbuf(nullptr)
         {
 
         }
