@@ -15,9 +15,9 @@ namespace ls
         {
             int n = ::read(fd, data, len);
             if(n == 0)
-                throw Exception(Exception::LS_EEOF);
+                return Exception::LS_EEOF;
             if(n < 0)
-                throw Exception(Exception::LS_EREAD);
+                return Exception::LS_EREAD;
             return n;
         }
 

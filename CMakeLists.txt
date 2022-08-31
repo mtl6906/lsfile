@@ -16,7 +16,7 @@ add_library(lsfile SHARED ${SRC})
 
 add_executable(testcase ${SRC} ${SRC_SAMPLE})
 
-target_link_libraries(testcase lsexception lsio lsbuffer lscstring)
+target_link_libraries(testcase lsexception lsio lsbuffer lscstring lslogger lstime)
 
 install(TARGETS lsfile DESTINATION lib)
 install(DIRECTORY include/ls/file DESTINATION include/ls)

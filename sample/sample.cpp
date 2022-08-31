@@ -21,15 +21,9 @@ class Int
 		friend io::InputStream *operator>>(io::InputStream *in, Int &i)
 		{
 			string text;
-			try
-			{
-				in -> read();
-			}
-			catch(Exception &e)
-			{
-				if(e.getCode() != Exception::LS_EEOF)
-					throw e;
-			}
+			int ec = in -> read();
+			if(ec < 0 && ec != Exception::LS_EEOF)
+				throw Exception(ec);
 			text = in -> split();
 			i.parseFrom(text);
 			return in;
@@ -43,11 +37,11 @@ class Int
 			return out;
 		}
 	protected:
-		void parseFrom(string &text)
+		int parseFrom(string &text)
 		{
 			value = stoi(text);
-			if(check(text) == false)
-				throw Exception::LS_EFORMAT;
+			int ec = check(text);
+			return ec;
 		}
 		void toString(string &text)
 		{
@@ -57,7 +51,9 @@ class Int
 		{
 			string checkText;
 			toString(checkText);
-			return text == checkText;
+			if(text != checkText)
+				Exception::LS_EFORMAT;
+			return Exception::LS_OK;
 		}
 		int value;
 };

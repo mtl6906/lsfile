@@ -14,7 +14,7 @@ namespace ls
         class File
 	{
 	    public:
-		File(const std::string &filename);
+		File(const std::string &filename, int flag = 0);
 	        ~File();
 	        int size();
 	        bool exist();
@@ -22,6 +22,7 @@ namespace ls
 	        io::Reader *getReader();
           protected:
                 int fd;
+		int flag;
                 std::string filename;
                 std::unique_ptr<struct stat> statbuf;
                 std::unique_ptr<io::Writer> writer;

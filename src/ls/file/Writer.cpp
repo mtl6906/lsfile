@@ -15,7 +15,7 @@ namespace ls
         {
             int n = ::write(fd, data, len);
             if(n < 0)
-                throw Exception(Exception::LS_EWRITE);
+                return Exception::LS_EWRITE;
             return n;
         }
 
