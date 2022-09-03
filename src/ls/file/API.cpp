@@ -12,18 +12,18 @@ namespace ls
     {
         API api;
 
-        void API::create(const string &filename, int mode)
+        int API::create(const string &filename, int mode)
         {
             int fd = creat(filename.c_str(), mode);
             if(fd < 0)
-                throw Exception(Exception::LS_ECREAT);
+             	return Exception::LS_ECREAT;
             close(fd);
         }
 
-        void API::remove(const string &filename)
+        int API::remove(const string &filename)
         {
             if(unlink(filename.c_str()) < 0)
-                throw Exception(Exception::LS_EUNLINK);
+                return Exception::LS_EUNLINK;
         }
 
         File *API::get(const string &filename)

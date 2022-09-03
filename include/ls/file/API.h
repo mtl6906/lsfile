@@ -11,8 +11,8 @@ namespace ls
         class API
         {
             public:
-                void create(const std::string &filename, int mode);
-                void remove(const std::string &filename);
+                int create(const std::string &filename, int mode);
+                int remove(const std::string &filename);
                 void rename(File *file, const std::string &name);
                 File *get(const std::string &filename);
                 File *get(const std::string &dirname, const std::string &filename);
